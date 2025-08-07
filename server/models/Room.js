@@ -1,10 +1,25 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const roomSchema = new mongoose.Schema({
-    number: { type: String, required: true },
-    type: { type: String, enum: ["single", "double", "suite"], required: true },
-    price: { type: Number, required: true },
-    status: { type: String, enum: ["available", "booked"], default: "available" },
-});
+    roomNumber: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    type: {
+        type: String,
+        enum: ['AC', 'Non-AC'],
+        required: true
+    },
+    isBooked: {
+        type: Boolean,
+        default: false
+    },
+    assignedTo: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        default: null
+    }
+}, { timestamps: true });
 
-module.exports = mongoose.model("Room", roomSchema);
+module.exports = mongoose.model('Room', roomSchema);
