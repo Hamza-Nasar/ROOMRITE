@@ -31,6 +31,7 @@ const protect = async (req, res, next) => {
         return res.status(401).json({ message: 'Not authorized, no token' });
     }
 };
+
 // middleware/isAdmin.js
 module.exports = (req, res, next) => {
     if (req.user.role !== "admin") {

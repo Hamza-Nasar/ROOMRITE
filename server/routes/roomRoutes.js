@@ -3,7 +3,6 @@ const router = express.Router();
 const Room = require('../models/Room');
 const authMiddleware = require('../middleware/authMiddleware');
 
-// ➕ Add Room
 router.post('/', authMiddleware, async (req, res) => {
   try {
     const { roomNumber, type } = req.body;
